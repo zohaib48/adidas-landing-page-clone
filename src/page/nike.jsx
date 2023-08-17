@@ -908,82 +908,63 @@ const Nike = () => {
         </Box>
 
         <Box
-          sx={{
-            mt: 20,
-            ml: isScreenLarge ? 0 : 20,
-            mr: isScreenLarge ? 0 : 20,
-            display: "flex",
-          }}
-        >
-          {ShopCards.map((item) => (
-            <Card
-              key={item.id}
-              sx={{
-                width: 397,
-                minWidth: 200,
-                ml: 1,
-                mr: 3,
-                mb: 2,
-                "&:hover": {
-                  border: "solid",
-                  borderWidth: "1px",
-                },
-                flexGrow: 1,
-                height: "auto",
-              }}
-            >
-              <CardMedia
-                component="div"
-                sx={{ position: "relative", width: "100%" }}
-              >
-                <img
-                  src={item.image}
-                  style={{ width: "100%", height: "100%" }}
-                />
-              </CardMedia>
-              <CardContent >
-                <Typography
-                  gutterBottom
-                  sx={{
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    
-                  }}
-                >
-                  {item.heading}
-                </Typography>
+  sx={{
+    mt: 20,
+    ml: isScreenLarge ? 0 : 20,
+    mr: isScreenLarge ? 0 : 20,
+    display: "flex",
 
-                <Box sx={{ position: "relative", minHeight: "100px" }}>
-                  <Typography sx={{ fontSize: "15px" }} color="text.secondary">
-                    {item.SubHeading}
-                  </Typography>
+    gap: 4,
+  }}
+>
+  {ShopCards.map((item) => (
+    <Card
+      key={item.id}
+      sx={{
+        width: "23%", // Distribute 4 cards evenly with some gap
+        mb: 2,
+        display: "flex",
+        flexDirection: "column",
+        position: "relative",
+      }}
+    >
+      <CardMedia component="div" sx={{ position: "relative", width: "100%" }}>
+        <img src={item.image} style={{ width: "100%", height: "100%" }} alt="Product" />
+      </CardMedia>
+      <CardContent style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+        <div style={{ flex: 1 }}>
+          <Typography gutterBottom sx={{ fontSize: "20px", fontWeight: "bold" }}>
+            {item.heading}
+          </Typography>
+          <Typography sx={{ fontSize: "15px",mb:4 }} color="text.secondary">
+            {item.SubHeading}
+          </Typography>
+        </div>
+        <div style={{ textAlign: "start" }}>
+          <Link
+            underline="always"
+            color="inherit"
+            sx={{
+              fontSize: "18px",
+              fontWeight: "bold",
+              marginTop: "auto",
+             
+              "&:hover": {
+                backgroundColor: "black",
+                color: "white",
+              },
+            }}
+            href="#"
+          >
+            SHOP NOW
+          </Link>
+        </div>
+      </CardContent>
+    </Card>
+  ))}
+</Box>
 
-                  <Link
-                    underline="always"
-                    color={"inherit"}
-                    sx={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                     
-                      textAlign: "start",
-                      
-                      "&:hover": {
-                        backgroundColor: "black",
-                        color: "white",
-                      },
-                      fontSize: "18px",
-                      fontWeight: "bold",
-                    }}
-                    href="#"
-                  >
-                    SHOP NOW
-                  </Link>
-                </Box>
-              </CardContent>
-            </Card>
-          ))}
-        </Box>
+
 
         <Box
           sx={{
