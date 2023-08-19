@@ -39,6 +39,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Divider from "@mui/material/Divider";
+import { Padding } from "@mui/icons-material";
+import shoe3 from "./adidas_pics/shoes2.webp"
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -51,19 +53,19 @@ const Item = styled(Paper)(({ theme }) => ({
 const Category = [
   {
     name: "SHOES",
-    image: shoe1,
+    image: shoe3,
   },
   {
     name: "CLOTHING",
-    image: shoe1,
+    image: shoe3,
   },
   {
     name: "BEST SELLERS",
-    image: shoe1,
+    image: shoe3,
   },
   {
     name: "NEW ARRIVALS",
-    image: shoe1,
+    image: shoe3,
   },
 ];
 
@@ -488,7 +490,9 @@ const Nike = () => {
             justifyContent: "start",
           }}
         >
-          <Box sx={{ ml: 20 }}>
+          <Box sx={{ ml: 2,[theme.breakpoints.up("sm")]:{
+            ml: 20
+          } }}>
             <Typography
               sx={{ fontWeight: "bold", fontSize: "50px", color: "white" }}
             >
@@ -554,6 +558,8 @@ const Nike = () => {
             width: `100%`,
             height: "390px",
             backgroundColor: "rgb(237,237,227)",
+            
+            
           }}
         >
           <Typography
@@ -609,7 +615,10 @@ const Nike = () => {
               fontSize: "45px",
               color: "black",
               mt: 8,
-              pl: 20,
+              ml: 1,
+              [theme.breakpoints.up("sm") ]:{
+                ml: 20,
+              },
             }}
           >
             Still Interested?
@@ -701,35 +710,44 @@ const Nike = () => {
         </Box>
 
         <>
-          <Box
+          <Grid
+            container
+            spacing={2}
             sx={{
               mt: 20,
-              ml: isScreenSmall ? 0 : 20,
-              mr: isScreenSmall ? 0 : 20,
+
+              paddingLeft: isScreenSmall?1:20,
+              paddingRight: isScreenSmall?1:20,
               display: "flex",
 
-              flexDirection: isScreenSmall ? "column" : "row", // Set flex direction based on screen size
+            
             }}
           >
             {Category.map((item, index) => (
-              <Box
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={3}
                 key={index}
                 sx={{
-                  backgroundImage: `url(${item.image})`,
-                  backgroundSize: "100%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "bottom",
-                  width: "400px", // Fixed width for each box
-                  height: "250px",
-                  position: "relative",
-                  ml: 3,
-                  mb: 3, // Add margin-bottom to separate the boxes
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  minWidth: "350px",
+                  minHeight:"290px"
                 }}
               >
-                <Box sx={{ position: "absolute", bottom: 10 }}>
+                <Box>
+                  <img
+                    src={item.image}
+                    style={{
+                      width: "100%", // Fixed width for each box
+                      height: "290px",
+                      objectPosition: "center",
+                      objectFit: "cover",
+                    }}
+                    alt=""
+                  />
+                </Box>
+                <Box sx={{ textAlign: "center", bottom: 10 }}>
                   <Link
                     underline="always"
                     color={"inherit"}
@@ -738,8 +756,10 @@ const Nike = () => {
                         backgroundColor: "black",
                         color: "white",
                       },
+                      width: "100%",
                       fontSize: "18px",
                       fontWeight: "bold",
+
                       mt: isScreenSmall ? 4 : 0, // Add margin-top for small screens
                     }}
                     href="#"
@@ -747,87 +767,105 @@ const Nike = () => {
                     {item.name}
                   </Link>
                 </Box>
-              </Box>
+              </Grid>
             ))}
-          </Box>
+          </Grid>
         </>
 
         {/* NEW ARRIVALS */}
-        <Box component={"Trending"}>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              mt: 10,
-              ml: 20,
-              justifyContent: "space-between",
-            }}
-          >
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <ArrowRightAltIcon sx={{ fontSize: "60px" }} />
-              <Box sx={{ display: "flex" }}>
-                <Typography
-                  sx={{
-                    whiteSpace: "nowrap",
-                    fontWeight: "bold",
-                    fontSize: "30px",
-                    color: "black",
-                  }}
-                >
-                  {" "}
-                  New Arrivals
-                </Typography>
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "30px",
-                    color: "rgba(0, 0, 0, 0.3)",
-                    whiteSpace: "nowrap",
-                    ml: 5,
-                  }}
-                >
-                  {" "}
-                  What's Trending
-                </Typography>
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "30px",
-                    color: "rgba(0, 0, 0, 0.3)",
-                    whiteSpace: "nowrap",
-                    ml: 5,
-                  }}
-                >
-                  {" "}
-                  Member Exclusives
-                </Typography>
-              </Box>
-            </Box>
-
-            <Box sx={{ ml: 30, mr: 30 }}>
-              <Link
-                underline="always"
-                color={"inherit"}
+        <Box component={"Trending"} sx={{ width: "100%" }}>
+          <Grid container>
+            <Grid item xs={12}>
+              <Box
                 sx={{
-                  "&:hover": {
-                    backgroundColor: "black",
-                    color: "white",
-                    whiteSpace: "nowrap",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  mt: 10,
+                  ml: 10,
+                 
+                  [theme.breakpoints.up("sm")]: {
+                    ml: 20,
+                    mr: 20,
                   },
-                  fontSize: "23px",
-                  mt: 4,
                 }}
-                href="#"
               >
-                View All{" "}
-              </Link>
-            </Box>
-          </Box>
+                <Grid  container spacing={2}>
+                  <Grid item xs={12} md={4} lg={3}>
+                    <Typography
+                      sx={{
+                        whiteSpace: "nowrap",
+                        fontWeight: "bold",
+                        fontSize: "30px",
+                        color: "black",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <ArrowRightAltIcon sx={{ fontSize: "60px" }} />
+                      New Arrivals
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} md={4} lg={3}>
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        fontSize: "30px",
+                        color: "rgba(0, 0, 0, 0.3)",
+                       
+                       
+                      }}
+                    >
+                      {" "}
+                      What's Trending
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} md={4} lg={3}>
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        fontSize: "30px",
+                        color: "rgba(0, 0, 0, 0.3)",
+                       
+                      }}
+                    >
+                      {" "}
+                      Member Exclusives
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} md={4} lg={3}>
+                    <Link
+                      underline="always"
+                      color="inherit"
+                      sx={{
+                        "&:hover": {
+                          backgroundColor: "black",
+                          color: "white",
+                         
+                        },
+                        fontSize:"30px",
+                        mt: 4,
+                      }}
+                      href="#"
+                    >
+                      View All
+                    </Link>
+                  </Grid>
+                </Grid>
+
+               
+              </Box>
+            </Grid>
+          </Grid>
 
           <Box
             sx={{
               mt: 10,
-              ml: 20,
+              ml: 2,
+              [theme.breakpoints.up("sm")]: {
+                ml: 20,
+              
+              },
               display: "flex",
               overflowX: "scroll",
               scrollbarWidth: "3px",
@@ -907,148 +945,173 @@ const Nike = () => {
           </Box>
         </Box>
 
-        <Box
-  sx={{
-    mt: 20,
-    ml: isScreenLarge ? 0 : 20,
-    mr: isScreenLarge ? 0 : 20,
-    display: "flex",
-
-    gap: 4,
-  }}
->
-  {ShopCards.map((item) => (
-    <Card
-      key={item.id}
-      sx={{
-        width: "23%", // Distribute 4 cards evenly with some gap
-        mb: 2,
-        display: "flex",
-        flexDirection: "column",
-        position: "relative",
-      }}
-    >
-      <CardMedia component="div" sx={{ position: "relative", width: "100%" }}>
-        <img src={item.image} style={{ width: "100%", height: "100%" }} alt="Product" />
-      </CardMedia>
-      <CardContent style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-        <div style={{ flex: 1 }}>
-          <Typography gutterBottom sx={{ fontSize: "20px", fontWeight: "bold" }}>
-            {item.heading}
-          </Typography>
-          <Typography sx={{ fontSize: "15px",mb:4 }} color="text.secondary">
-            {item.SubHeading}
-          </Typography>
-        </div>
-        <div style={{ textAlign: "start" }}>
-          <Link
-            underline="always"
-            color="inherit"
-            sx={{
-              fontSize: "18px",
-              fontWeight: "bold",
-              marginTop: "auto",
-             
-              "&:hover": {
-                backgroundColor: "black",
-                color: "white",
-              },
-            }}
-            href="#"
-          >
-            SHOP NOW
-          </Link>
-        </div>
-      </CardContent>
-    </Card>
-  ))}
-</Box>
-
-
-
-        <Box
-          sx={{
-            mt: 10,
-            ml: isScreenLarge ? 0 : 20,
-            mr: isScreenLarge ? 0 : 20,
-            fontSize: 30,
-            fontWeight: "bold",
-          }}
+        <Grid
+          container
+          spacing={4}
+          sx={{ mt: 20,  paddingLeft: isScreenSmall?1:10, paddingRight: isScreenSmall?1:10 }}
         >
-          MORE FROM ADIDAS STORIES
-          <Box sx={{ display: "flex", mt: 5 }}>
-            {blog.map((item) => (
+          {ShopCards.map((item) => (
+            <Grid item xs={12} sm={6} md={3} key={item.id}>
               <Card
-                key={item.id}
                 sx={{
-                  minWidth: 350,
-
-                  ml: 1,
-                  mr: 3,
-                  mb: 2,
-                  boxShadow: "none",
-                  flexGrow: 1,
-                  height: "390px",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  
                 }}
               >
-                <CardMedia
-                  component="div"
-                  sx={{
-                    position: "relative",
-                    height: "280px",
-                    width: "100%",
-                    overflow: "hidden",
-                  }}
-                >
+                <CardMedia>
                   <img
                     src={item.image}
+                    alt="Product"
                     style={{
+                      height: "500px",
                       width: "100%",
-                      height: "100%",
                       objectFit: "cover",
-                      objectPosition: "center",
                     }}
                   />
                 </CardMedia>
-
-                <CardContent sx={{ position: "relative" }}>
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      width: "100%",
-                      left: 30,
-                      top: -30,
-                      bgcolor: "white",
-                    }}
-                  >
-                    {" "}
+                <CardContent
+                  sx={{ flex: 1, display: "flex", flexDirection: "column" }}
+                >
+                  <div style={{}}>
                     <Typography
                       gutterBottom
-                      sx={{
-                        fontSize: "19px",
-                        fontWeight: "bold",
-                        whiteSpace: "nowrap",
-                        paddingRight: "40px",
-                      }}
+                      variant="h6"
+                      sx={{ fontWeight: "bold" }}
                     >
                       {item.heading}
                     </Typography>
                     <Typography
-                      sx={{
-                        fontSize: "17px",
-                        textAlign: "justify",
-                        paddingRight: "40px",
-                      }}
-                      color="black"
+                      variant="body2"
+                      sx={{ mb: 4 }}
+                      color="text.secondary"
                     >
                       {item.SubHeading}
                     </Typography>
-                  </Box>
+                  </div>
+                  <div style={{ textAlign: "start", marginTop: "auto" }}>
+                    <Link
+                      underline="always"
+                      color="inherit"
+                      sx={{
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        "&:hover": {
+                          backgroundColor: "black",
+                          color: "white",
+                        },
+                      }}
+                      href="#"
+                    >
+                      SHOP NOW
+                    </Link>
+                  </div>
                 </CardContent>
               </Card>
+            </Grid>
+          ))}
+        </Grid>
+
+        <Grid container>
+          <Grid
+            item
+            xs={12}
+            md={3}
+            sx={{
+              mt: 10,
+              ml: 2,
+              [theme.breakpoints.up("sm")]: {
+                ml: 20,
+               
+              },
+              fontSize: 30,
+              fontWeight: "bold",
+             
+            }}
+          >
+            MORE FROM ADIDAS STORIES
+          </Grid>
+          <Grid
+            item
+            container
+            mt={5}
+            sx={{ paddingLeft: 1, paddingRight: 1 , [theme.breakpoints.up("md")]: {
+              paddingLeft: 10, paddingRight: 10 
+            },
+            }}
+            
+          >
+            {blog.map((item) => (
+              <Grid
+                item
+                key={item.id}
+                xs={12}
+                sm={6}
+                md={3}
+                sx={{
+                  pl: 2,
+                  mb: 2,
+
+                  boxShadow: "none",
+                  flexGrow: 1,
+                }}
+              >
+                <Card>
+                  <CardMedia
+                    component="div"
+                    sx={{
+                      width: "100%",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src={item.image}
+                      style={{
+                        width: "100%",
+                        height: "280px",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                      }}
+                      alt={item.heading}
+                    />
+                    <CardContent sx={{ position: "relative" }}>
+                      <Box
+                        sx={{
+                          width: "100%",
+                          mt: -5,
+
+                          padding: 1,
+
+                          bgcolor: "white",
+                        }}
+                      >
+                        <Typography
+                          gutterBottom
+                          sx={{
+                            fontSize: "19px",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {item.heading}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: "17px",
+                            textAlign: "justify",
+                          }}
+                          color="black"
+                        >
+                          {item.SubHeading}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                  </CardMedia>
+                </Card>
+              </Grid>
             ))}
-          </Box>
-        </Box>
+          </Grid>
+        </Grid>
 
         {/* POPULAR RIGHT NOW  */}
         <Box
@@ -1126,7 +1189,7 @@ const Nike = () => {
               flexDirection: isScreenLarge ? "column" : "row",
             }}
           >
-            <Box sx={{ minWidth: "500px", height: "100%", mr: 8 }}>
+            <Box sx={{ minWidth: "auto", height: "100%", mr: 8 }}>
               <Typography
                 sx={{
                   lineHeight: "100%",
@@ -1169,7 +1232,7 @@ const Nike = () => {
                 we think about the impact we have on our world.
               </Typography>
             </Box>
-            <Box sx={{ minWidth: "500px", height: "100%" }}>
+            <Box sx={{ minWidth: "auto", height: "100%" }}>
               <Typography
                 sx={{
                   lineHeight: "100%",
