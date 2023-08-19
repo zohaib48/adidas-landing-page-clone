@@ -1,20 +1,21 @@
 {
   "files": {
     "main.css": "/adidas-landing-page-clone/static/css/main.073c9b0a.css",
-    "main.js": "/adidas-landing-page-clone/static/js/main.5caaed05.js",
+    "main.js": "/adidas-landing-page-clone/static/js/main.1afbd6a6.js",
     "static/js/787.a09012be.chunk.js": "/adidas-landing-page-clone/static/js/787.a09012be.chunk.js",
     "static/media/blog.avif": "/adidas-landing-page-clone/static/media/blog.dc62b92e7fd9de23da5f.avif",
     "static/media/cover.avif": "/adidas-landing-page-clone/static/media/cover.1f0b88bf2048db643fb1.avif",
     "static/media/shoe2.avif": "/adidas-landing-page-clone/static/media/shoe2.b2961449a70c8725574c.avif",
     "static/media/shoes.avif": "/adidas-landing-page-clone/static/media/shoes.aa7cadc8a4014f2ddc50.avif",
+    "static/media/shoes2.webp": "/adidas-landing-page-clone/static/media/shoes2.edaa4b0db82dd3cf1d85.webp",
     "static/media/shoes1.avif": "/adidas-landing-page-clone/static/media/shoes1.e06069f64e55619fd16f.avif",
     "index.html": "/adidas-landing-page-clone/index.html",
     "main.073c9b0a.css.map": "/adidas-landing-page-clone/static/css/main.073c9b0a.css.map",
-    "main.5caaed05.js.map": "/adidas-landing-page-clone/static/js/main.5caaed05.js.map",
+    "main.1afbd6a6.js.map": "/adidas-landing-page-clone/static/js/main.1afbd6a6.js.map",
     "787.a09012be.chunk.js.map": "/adidas-landing-page-clone/static/js/787.a09012be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.5caaed05.js"
+    "static/js/main.1afbd6a6.js"
   ]
 }
