@@ -1,295 +1,46 @@
 import * as React from "react";
-import logo from "./adidas_pics/adidas.png";
 import {
-  AppBar,
   Box,
   Button,
-  InputAdornment,
-  ListItemIcon,
-  Tab,
-  Tabs,
-  TextField,
-  Toolbar,
   Typography,
-  Link,
-  Card,
-  CardMedia,
-  CardContent,
   Grid,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
 
-import SearchIcon from "@mui/icons-material/Search";
-import PersonIcon from "@mui/icons-material/Person";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import RedeemIcon from "@mui/icons-material/Redeem";
-
-import flag from "./adidas_pics/flag.png";
-import cover from "./adidas_pics/cover.avif";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import shoe from "./adidas_pics/shoes.avif";
-import shoe1 from "./adidas_pics/shoes1.avif";
-import shoe2 from "./adidas_pics/shoe2.avif";
-import blogPic from "./adidas_pics/blog.avif";
-import { experimentalStyled as styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
+import shoe from "./addidas_image/shoes.avif";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import Divider from "@mui/material/Divider";
-import { Padding } from "@mui/icons-material";
-import shoe3 from "./adidas_pics/shoes2.webp"
+import Header from "../Components/header";
+import ShopCards from "../Components/ShopCards";
+import BlogCards from "../Components/BlogCards";
+import PopularItem from "../Components/PopularItem";
+import Story from "../Components/Stories";
+import FooterItem from "../Components/FooterItem";
+import LastFooter from "../Components/LastFooter";
+import Hero_button from "../Components/hero_section_Buttons";
+import InterestedCards from "../Components/Still_interested_Cards";
+import CategoryCards from "../Components/Category_Cards";
+import ScrolbarBox from "../Components/Scrolbar";
+import Links from "../Components/Links";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
 
-const Category = [
-  {
-    name: "SHOES",
-    image: shoe3,
-  },
-  {
-    name: "CLOTHING",
-    image: shoe3,
-  },
-  {
-    name: "BEST SELLERS",
-    image: shoe3,
-  },
-  {
-    name: "NEW ARRIVALS",
-    image: shoe3,
-  },
-];
 
-const data = [
-  {
-    id: 1,
-    image: shoe,
-    title: "Samba Classic",
-    description: "Performance",
-  },
-  {
-    id: 1,
-    image: shoe,
-    title: "Samba Classic",
-    description: "Performance",
-  },
-  {
-    id: 1,
-    image: shoe,
-    title: "Samba Classic",
-    description: "Performance",
-  },
-  {
-    id: 1,
-    image: shoe,
-    title: "Samba Classic",
-    description: "Performance",
-  },
-  {
-    id: 1,
-    image: shoe,
-    title: "Samba Classic",
-    description: "Performance",
-  },
-  {
-    id: 1,
-    image: shoe,
-    title: "Samba Classic",
-    description: "Performance",
-  },
-];
-
-const ShopCards = [
-  {
-    image: shoe2,
-    heading: "ICONIC THEN. ICONIC NOW",
-    SubHeading: "Elevate your everyday style with the Samba.",
-  },
-  {
-    image: shoe2,
-    heading: "THE LIGHTEST ULTRABOOST EVER",
-    SubHeading:
-      "Ultraboost Light, with 30% lighter Boost for ultimate cushioning and comfort.",
-  },
-  {
-    image: shoe2,
-    heading: "JUST DROPPED: TRAE 3",
-    SubHeading:
-      "Engineered with performance technology unlike any shoe on court..",
-  },
-  {
-    image: shoe2,
-    heading: "BACK TO SCHOOL STYLES",
-    SubHeading:
-      "Kick-start your fall wardrobe with tees, shorts and sneakers to mix and match.",
-  },
-];
-
-const blog = [
-  {
-    image: blogPic,
-    heading: "WHAT IS A PENALTY KICK IN SOCCER",
-    SubHeading:
-      "Are you curious about what a penalty kick is, when it happens and what the rules are? Read about what they are and when they happen with adidas.",
-  },
-  {
-    image: blogPic,
-    heading: "WHAT IS A PENALTY KICK IN SOCCER",
-    SubHeading:
-      "Are you curious about what a penalty kick is, when it happens and what the rules are? Read about what they are and when they happen with adidas.",
-  },
-  {
-    image: blogPic,
-    heading: "WHAT IS A PENALTY KICK IN SOCCER",
-    SubHeading:
-      "Are you curious about what a penalty kick is, when it happens and what the rules are? Read about what they are and when they happen with adidas.",
-  },
-  {
-    image: blogPic,
-    heading: "WHAT IS A PENALTY KICK IN SOCCER",
-    SubHeading:
-      "Are you curious about what a penalty kick is, when it happens and what the rules are? Read about what they are and when they happen with adidas.",
-  },
-];
-
-const Popular = [
-  {
-    name: "UltraBoost",
-  },
-  {
-    name: "nmd",
-  },
-  {
-    name: "Backpacks",
-  },
-  {
-    name: "Cheats",
-  },
-  {
-    name: "Stan Smith",
-  },
-  {
-    name: "Samba",
-  },
-];
-
-const FooterItem = [
-  {
-    name: "PRODUCTS",
-    tags: [
-      "Shoes",
-      "Clothing",
-      "Accessories",
-      "Gift Cards",
-      "New Arrival",
-      "Best Seller",
-    ],
-  },
-  {
-    name: "SPORTS",
-    tags: [
-      "Soccer",
-      "Running",
-      "Basketball",
-      "Football",
-      "Outdoor",
-      "Golf",
-      "Baseball",
-      "Tennis",
-      "Skateboarding",
-      "Training",
-    ],
-  },
-  {
-    name: "COLLECTION",
-    tags: [
-      "adicolor",
-      "Ultraboost",
-      "NMD",
-      "Forum",
-      "Superstar",
-      "Running Shoes",
-      "adilette",
-      "Stan Smith",
-      "adizero",
-      "Tiro",
-      "Cloudfoam Pure",
-    ],
-  },
-  {
-    name: "SUPPORT",
-    tags: [
-      "Help",
-      "Returns & Exchanges",
-      "Shipping",
-      "Order Tracker",
-      "Store Locator",
-      "Size Charts",
-      "Gift Card Balance",
-      "How to Clean Shoes",
-      "Running Shoe Finder",
-      "Bra Fit Guide",
-      "Sports Bra Finder",
-      "Breathing for Running",
-      "Promotions",
-    ],
-  },
-  {
-    name: "COMPANY INFO",
-    tags: [
-      "About Us",
-      "Student Discount",
-      "Military & Healthcare Discount",
-      "adidas Stories",
-      "adidas Apps",
-      "Sustainability",
-      "adiClub",
-      "Affiliates",
-      "Press",
-      "Careers",
-      "California Transparency in Supply Chains Act",
-      "Responsible Disclosure",
-      "Transparency in Coverage",
-      "Country Selector",
-    ],
-  },
-];
-
-const FooterLast = [
-  {
-    name: "Your Privacy Choices",
-  },
-  {
-    name: "Privacy policy",
-  },
-  {
-    name: "Terms and Conditions",
-  },
-];
 
 const Nike = () => {
-  const [value, setValue] = React.useState("one");
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   const theme = useTheme();
   const isScreenSmall = useMediaQuery(theme.breakpoints.down("md"));
   const isScreenLarge = useMediaQuery(theme.breakpoints.down("lg"));
 
   return (
     <>
-      <Box>
+      <Box sx={{ overflowX: "hidden" }}>
+        {/**************
+                 HEADER
+                 **************/}
         <Box
           sx={{
             color: "white",
@@ -306,248 +57,50 @@ const Nike = () => {
         >
           Free Standard SHIPPING & RETURNS
         </Box>
-        <AppBar
-          sx={{
-            height: "90px",
-            bgcolor: "white",
-            mt: "40px",
-            position: "fixed",
-            display: "flex",
-          }}
-        >
-          <Toolbar sx={{ justifyContent: "space-between" }}>
-            <Box
-              sx={{
-                display: `flex`,
-                height: `900px`,
+        <Header />
 
-                width: "150px",
-                backgroundImage: `url(${logo})`,
-                backgroundSize: 250,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-            ></Box>
-
-            <Box
-              sx={{
-                ml: { lg: 10, xl: 30 },
-                width: { xs: 0, sm: 0, md: 0, lg: 800 },
-              }}
-            >
-              <Tabs
-                onChange={handleChange}
-                value={value}
-                sx={{
-                  marginBottom: -3,
-                  color: "black",
-                  fontSize: "40px",
-                  "& .MuiTabs-indicator": {
-                    backgroundColor: "black",
-                  },
-                }}
-                aria-label="secondary tabs example"
-              >
-                <Tab
-                  sx={{
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                    "&.Mui-selected": { color: "black" },
-                    paddingBottom: 0,
-                  }}
-                  value="one"
-                  label="MEN"
-                />
-                <Tab
-                  sx={{
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                    "&.Mui-selected": { color: "black" },
-                    paddingBottom: 0,
-                  }}
-                  value="two"
-                  label="WOMEN"
-                />
-                <Tab
-                  sx={{
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                    "&.Mui-selected": { color: "black" },
-                    paddingBottom: 0,
-                  }}
-                  value="three"
-                  label="KIDS"
-                />
-                <Tab
-                  sx={{
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                    "&.Mui-selected": { color: "black" },
-                    paddingBottom: 0,
-                  }}
-                  value="four"
-                  label="BACK TO SCHOOL"
-                />
-                <Tab
-                  sx={{
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                    "&.Mui-selected": { color: "black" },
-                    paddingBottom: 0,
-                  }}
-                  value="five"
-                  label="SALE"
-                />
-                <Tab
-                  sx={{
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                    "&.Mui-selected": { color: "black" },
-                    paddingBottom: 0,
-                  }}
-                  value="six"
-                  label="3 STRIPE LIFE"
-                />
-              </Tabs>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                marginBottom: -3,
-                mr: 5,
-                position: "relative",
-              }}
-            >
-              <Box
-                sx={{
-                  fontSize: "13px",
-                  width: "350px ",
-                  position: "absolute",
-                  top: -30,
-                  display: "flex",
-                  alignItems: "Center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Link href="#">help</Link>
-                <Link href="#">orders and returns</Link>
-                <Link href="#">join adiClub</Link>
-                <img style={{ width: 30 }} src={flag}></img>
-              </Box>
-
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                {" "}
-                <TextField
-                  size="small"
-                  variant="outlined"
-                  fullWidth
-                  placeholder="Search"
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      backgroundColor: "lightgray", // Change the background color here
-                    },
-                  }}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <SearchIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                <ListItemIcon
-                  sx={{
-                    ml: 3,
-                    width: "150px",
-                    justifyContent: "space-between",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30 }} />
-                  <FavoriteBorderIcon sx={{ fontSize: 30 }} />
-                  <RedeemIcon sx={{ fontSize: 30 }} />
-                </ListItemIcon>{" "}
-              </Box>
-            </Box>
-          </Toolbar>
-        </AppBar>
-
+        {/**************
+                  HERO SECTION
+                 **************/}
         <Box
           sx={{
             mt: "130px",
             height: "calc(100vh - 180px)",
             width: "100%",
-            bgcolor: "blue",
-            backgroundImage: `url(${cover})`,
+            backgroundImage: `url(https://www.asics.com/dw/image/v2/BBTN_PRD/on/demandware.static/-/Sites-asics-us-Library/default/dw29ebd128/firstspirit/media/blog_article_images_22521/asics_blog_hero_desktop_runningvstraining_022521.jpg)`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "end",
             display: "flex",
             alignItems: "center",
-            justifyContent: "start",
           }}
         >
-          <Box sx={{ ml: 2,[theme.breakpoints.up("sm")]:{
-            ml: 20
-          } }}>
+          <Box
+            sx={{
+              ml: 2,
+              [theme.breakpoints.up("sm")]: {
+                ml: 20,
+              },
+            }}
+          >
             <Typography
               sx={{ fontWeight: "bold", fontSize: "50px", color: "white" }}
             >
               SUPERSTAR XLG
             </Typography>
-            <Typography sx={{ fontSize: "20px", color: "white" }}>
+            <Typography
+              sx={{ fontWeight: "bold", fontSize: "20px", color: "black" }}
+            >
               No expectations, no rules. Tell your story with the Superstar XLG.
             </Typography>
 
-            <Box sx={{ display: "block" }}>
-              <Button
-                sx={{
-                  mt: 2,
-                  fontWeight: "bold",
-                  bgcolor: "white",
-                  fontSize: "20px",
-                  color: "black",
-                  "& .MuiSvgIcon-root": {
-                    fontSize: "50px",
-                  },
-                  "&:hover": {
-                    bgcolor: "white",
-                    color: "rgba(0, 0, 0, 0.5)",
-                  },
-                }}
-                variant="contained"
-                endIcon={<ArrowRightAltIcon />}
-              >
-                SHOP WOMEN
-              </Button>
-            </Box>
-            <Box sx={{ display: "block" }}>
-              <Button
-                sx={{
-                  mt: 2,
-                  fontWeight: "bold",
-                  bgcolor: "white",
-                  fontSize: "20px",
-                  color: "black",
-                  "& .MuiSvgIcon-root": {
-                    fontSize: "50px",
-                  },
-                  "&:hover": {
-                    bgcolor: "white",
-                    color: "rgba(0, 0, 0, 0.5)",
-                  },
-                }}
-                variant="contained"
-                endIcon={<ArrowRightAltIcon />}
-              >
-                SHOP MEN
-              </Button>
-            </Box>
+            <Hero_button name={"SHOP WOMEN"} />
+            <Hero_button name={"SHOP MEN"} />
           </Box>
         </Box>
+
+        {/**************
+                  YEEZY SECTION
+                 **************/}
 
         <Box
           sx={{
@@ -558,14 +111,12 @@ const Nike = () => {
             width: `100%`,
             height: "390px",
             backgroundColor: "rgb(237,237,227)",
-            
-            
           }}
         >
           <Typography
             sx={{ fontWeight: "bold", fontSize: "30px", color: "black" }}
           >
-            YEEZY{" "}
+            YEEZY
           </Typography>
           <Typography
             sx={{ fontSize: "20px", color: "black", textAlign: "center" }}
@@ -575,37 +126,9 @@ const Nike = () => {
             FIGHT AGAINST <br />
             DISCRIMINATION, HATE, RACISM, AND ANTISEMITISM.{" "}
           </Typography>
-          <Link
-            underline="always"
-            color={"inherit"}
-            sx={{
-              "&:hover": {
-                backgroundColor: "black",
-                color: "white", // Change the text color when hovered, if needed
-              },
-              fontSize: "18px",
-              mt: 4,
-            }}
-            href="#"
-          >
-            SHOP NOW{" "}
-          </Link>
 
-          <Link
-            underline="always"
-            color={"inherit"}
-            sx={{
-              "&:hover": {
-                backgroundColor: "black",
-                color: "white", // Change the text color when hovered, if needed
-              },
-              fontSize: "18px",
-              mt: 4,
-            }}
-            href="#"
-          >
-            READ THE PRESS RELEASE
-          </Link>
+          <Links name={"SHOP NOW"} />
+          <Links name={"  READ THE PRESS RELEASE"} />
         </Box>
 
         <Box>
@@ -616,7 +139,7 @@ const Nike = () => {
               color: "black",
               mt: 8,
               ml: 1,
-              [theme.breakpoints.up("sm") ]:{
+              [theme.breakpoints.up("sm")]: {
                 ml: 20,
               },
             }}
@@ -624,393 +147,311 @@ const Nike = () => {
             Still Interested?
           </Typography>
         </Box>
-        {/* SLIDER  */}
+        {/**************
+                Still Interested?  SLIDER
+                 **************/}
         <Box sx={{ mt: 5 }}>
-          <Box
-            sx={{
-              display: "flex",
-              overflowX: "scroll",
-              scrollbarWidth: "3px",
+          <ScrolbarBox marginLeft={2}>
+            <InterestedCards
+              item={{
+                id: 1,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/7be716def58143c7b09bef9dfa69f604_9366/Ultraboost_1.0_Shoes_Black_ID9682_01_standard.jpg",
+                title: "Samba Classic",
+                description: "Performance",
+                widths: "400px",
+                height: "420px",
+              }}
+            />
 
-              "&::-webkit-scrollbar": {
-                height: "12px",
-              },
-              "&::-webkit-scrollbar-track": {
-                background: "#F7F6F6",
-                marginLeft: 3,
-              },
-              "&::-webkit-scrollbar-thumb": {
-                background: "#888",
-                borderRadius: "6px",
-
-                "&:hover": {
-                  background: "#555",
-                },
-              },
-            }}
-          >
-            {data.map((item) => (
-              <Card
-                key={item.id}
-                sx={{
-                  minWidth: 420,
-                  ml: 2,
-                  mr: 3,
-                  mb: 2,
-                  "&:hover": {
-                    border: "solid",
-                    borderWidth: "1px",
-                  },
-                }}
-              >
-                <CardMedia
-                  component="div"
-                  height="420"
-                  sx={{ position: "relative" }}
-                >
-                  <img
-                    src={item.image}
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                  <Box
-                    sx={{
-                      fontSize: "15px",
-                      position: "absolute",
-                      top: 20,
-                      right: 20,
-                    }}
-                  >
-                    <FavoriteBorderIcon />
-                  </Box>
-                </CardMedia>
-                <CardContent sx={{ position: "relative" }}>
-                  <Box
-                    sx={{
-                      fontSize: "15px",
-                      position: "absolute",
-                      padding: 1,
-                      color: "black",
-                      bgcolor: "white",
-                      top: -33,
-                      left: 10,
-                    }}
-                  >
-                    $90
-                  </Box>
-                  <Typography gutterBottom sx={{ fontSize: "15px" }}>
-                    {item.title}
-                  </Typography>
-                  <Typography sx={{ fontSize: "15px" }} color="text.secondary">
-                    {item.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            ))}
-          </Box>
+            <InterestedCards
+              item={{
+                id: 2,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/162d94b2d5e74a1896aa40daae13733f_9366/Ultraboost_1.0_Shoes_Grey_ID9681_01_standard.jpg",
+                title: "UltraBoost 1.0 Shoes",
+                description: "Sportswear",
+                widths: "400px",
+                heights: "420px",
+              }}
+            />
+            <InterestedCards
+              item={{
+                id: 3,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/ac32ca411304417e9f5faf2c0005c887_9366/Ultraboost_1.0_Shoes_White_HQ6172_01_standard.jpg",
+                title: "Samba Classic",
+                description: "Performance",
+                widths: "400px",
+                heights: "420px",
+              }}
+            />
+            <InterestedCards
+              item={{
+                id: 4,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/ac32ca411304417e9f5faf2c0005c887_9366/Ultraboost_1.0_Shoes_White_HQ6172_01_standard.jpg",
+                title: "UltraBoost 1.0 Shoes",
+                description: "Sportswear",
+                widths: "400px",
+                heights: "420px",
+              }}
+            />
+            <InterestedCards
+              item={{
+                id: 5,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/8821e194e24a44c08447af2c0123077a_9366/Ultraboost_1.0_Shoes_Grey_GY7479_01_standard.jpg",
+                title: "Samba Classic",
+                description: "Performance",
+                widths: "400px",
+                heights: "420px",
+              }}
+            />
+            <InterestedCards
+              item={{
+                id: 6,
+                image: shoe,
+                title: "UltraBoost 1.0 Shoes",
+                description: "Sportswear",
+                widths: "400px",
+                heights: "420px",
+              }}
+            />
+          </ScrolbarBox>
         </Box>
 
         <>
+          {/**************
+                CATEGORIES
+                 **************/}
+
           <Grid
             container
             spacing={2}
             sx={{
               mt: 20,
 
-              paddingLeft: isScreenSmall?1:20,
-              paddingRight: isScreenSmall?1:20,
+              paddingLeft: 1,
+              paddingRight: 1,
+              [theme.breakpoints.up("xl")]: {
+                paddingLeft: 20,
+                paddingRight: 20,
+              },
               display: "flex",
-
-            
             }}
           >
-            {Category.map((item, index) => (
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={3}
-                key={index}
-                sx={{
-                  minWidth: "350px",
-                  minHeight:"290px"
-                }}
-              >
-                <Box>
-                  <img
-                    src={item.image}
-                    style={{
-                      width: "100%", // Fixed width for each box
-                      height: "290px",
-                      objectPosition: "center",
-                      objectFit: "cover",
-                    }}
-                    alt=""
-                  />
-                </Box>
-                <Box sx={{ textAlign: "center", bottom: 10 }}>
-                  <Link
-                    underline="always"
-                    color={"inherit"}
-                    sx={{
-                      "&:hover": {
-                        backgroundColor: "black",
-                        color: "white",
-                      },
-                      width: "100%",
-                      fontSize: "18px",
-                      fontWeight: "bold",
-
-                      mt: isScreenSmall ? 4 : 0, // Add margin-top for small screens
-                    }}
-                    href="#"
-                  >
-                    {item.name}
-                  </Link>
-                </Box>
-              </Grid>
-            ))}
+            <CategoryCards item={{ id: 1, name: "SHOES", image: "https://assets.adidas.com/images/w_600,f_auto,q_auto/ac32ca411304417e9f5faf2c0005c887_9366/Ultraboost_1.0_Shoes_White_HQ6172_01_standard.jpg" }} />
+            <CategoryCards
+              item={{
+                id: 2,
+                name: "CLOTHING",
+                image:
+                  "https://assets.adidas.com/images/w_940,f_auto,q_auto/d60137ddd39f4e8ab548af2e00b2f8ca_9366/HZ9066_21_model.jpg",
+              }}
+            />
+            <CategoryCards
+              item={{
+                id: 3,
+                name: "BEST SELLERS",
+                image:
+                  "https://www.adidas.ae/on/demandware.static/-/Sites-adidas-navigation-uae/default/dw5fa4e343/Men_Shoes.png",
+              }}
+            />
+            <CategoryCards
+              item={{
+                id: 4,
+                name: "NEW ARRIVALS",
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/fed2d7dda45047eb8b3d84e3c0a99fc4_9366/Crazy_8_Shoes_Black_IF2448_01_standard.jpg",
+              }}
+            />
           </Grid>
         </>
 
-        {/* NEW ARRIVALS */}
-        <Box component={"Trending"} sx={{ width: "100%" }}>
-          <Grid container>
-            <Grid item xs={12}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  mt: 10,
-                  ml: 10,
-                 
-                  [theme.breakpoints.up("sm")]: {
-                    ml: 20,
-                    mr: 20,
-                  },
-                }}
-              >
-                <Grid  container spacing={2}>
-                  <Grid item xs={12} md={4} lg={3}>
-                    <Typography
-                      sx={{
-                        whiteSpace: "nowrap",
-                        fontWeight: "bold",
-                        fontSize: "30px",
-                        color: "black",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <ArrowRightAltIcon sx={{ fontSize: "60px" }} />
-                      New Arrivals
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} md={4} lg={3}>
-                    <Typography
-                      sx={{
-                        fontWeight: "bold",
-                        fontSize: "30px",
-                        color: "rgba(0, 0, 0, 0.3)",
-                       
-                       
-                      }}
-                    >
-                      {" "}
-                      What's Trending
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} md={4} lg={3}>
-                    <Typography
-                      sx={{
-                        fontWeight: "bold",
-                        fontSize: "30px",
-                        color: "rgba(0, 0, 0, 0.3)",
-                       
-                      }}
-                    >
-                      {" "}
-                      Member Exclusives
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} md={4} lg={3}>
-                    <Link
-                      underline="always"
-                      color="inherit"
-                      sx={{
-                        "&:hover": {
-                          backgroundColor: "black",
-                          color: "white",
-                         
-                        },
-                        fontSize:"30px",
-                        mt: 4,
-                      }}
-                      href="#"
-                    >
-                      View All
-                    </Link>
-                  </Grid>
-                </Grid>
-
-               
-              </Box>
-            </Grid>
-          </Grid>
-
-          <Box
+        {/**************
+                New Arival
+                 **************/}
+        <Box component={"Trending"} sx={{}}>
+          <Grid
+            container
+            spacing={2}
             sx={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
               mt: 10,
               ml: 2,
-              [theme.breakpoints.up("sm")]: {
+
+              [theme.breakpoints.up("xl")]: {
                 ml: 20,
-              
-              },
-              display: "flex",
-              overflowX: "scroll",
-              scrollbarWidth: "3px",
-              "&::-webkit-scrollbar": {
-                height: "12px",
-              },
-              "&::-webkit-scrollbar-track": {
-                background: "#F7F6F6",
-                marginLeft: 3,
-              },
-              "&::-webkit-scrollbar-thumb": {
-                background: "#888",
-                borderRadius: "6px",
-                "&:hover": {
-                  background: "#555",
-                },
+                mr: 20,
               },
             }}
           >
-            {data.map((item) => (
-              <Card
-                key={item.id}
+            <Grid item xs={12} md={4} lg={3}>
+              <Typography
                 sx={{
-                  minWidth: 300,
-                  ml: 1,
-                  mr: 3,
-                  mb: 2,
-                  "&:hover": {
-                    border: "solid",
-                    borderWidth: "1px",
-                  },
+                  whiteSpace: "nowrap",
+                  fontWeight: "bold",
+                  fontSize: "30px",
+                  color: "black",
+                  display: "flex",
+                  alignItems: "center",
                 }}
               >
-                <CardMedia
-                  component="div"
-                  sx={{ position: "relative", height: "300px" }}
-                >
-                  <img
-                    src={item.image}
-                    style={{ width: "100%", height: "100%" }}
-                    alt={item.title}
-                  />
-                  <Box
-                    sx={{
-                      fontSize: "15px",
-                      position: "absolute",
-                      top: 20,
-                      right: 20,
-                    }}
-                  >
-                    <FavoriteBorderIcon />
-                  </Box>
-                </CardMedia>
-                <CardContent sx={{ position: "relative" }}>
-                  <Box
-                    sx={{
-                      fontSize: "15px",
-                      position: "absolute",
-                      padding: 1,
-                      color: "black",
-                      bgcolor: "white",
-                      top: -33,
-                      left: 10,
-                    }}
-                  >
-                    $90
-                  </Box>
-                  <Typography gutterBottom sx={{ fontSize: "15px" }}>
-                    {item.title}
-                  </Typography>
-                  <Typography sx={{ fontSize: "15px" }} color="text.secondary">
-                    {item.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            ))}
-          </Box>
+                <ArrowRightAltIcon sx={{ fontSize: "60px" }} />
+                New Arrivals
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "30px",
+                  color: "rgba(0, 0, 0, 0.3)",
+                }}
+              >
+                {" "}
+                What's Trending
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "30px",
+                  color: "rgba(0, 0, 0, 0.3)",
+                }}
+              >
+                {" "}
+                Member Exclusives
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Links name={" View All"} />
+            </Grid>
+          </Grid>
+
+          <ScrolbarBox>
+            <InterestedCards
+              item={{
+                id: 1,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/87679d1bd55e467d87588258324a90e5_9366/adidas_Stan_Smith_Homer_Simpson_White_IE7564_01_standard.jpg",
+                title: "Crazy 8 Shoes",
+                description: "Men Orignal",
+                widths: "300px",
+                heights: "300px",
+              }}
+            />
+            <InterestedCards
+              item={{
+                id: 2,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/0b7c7cfed42b4359abc8b6856f3741a2_9366/Arsenal_23-24_Third_Jersey_Green_HR6935_HM1.jpg",
+                title: "Arsenal 23/24 Third Jersey",
+                description: "Men Soccer",
+                widths: "300px",
+                heights: "300px",
+              }}
+            />
+            <InterestedCards
+              item={{
+                id: 3,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/162d94b2d5e74a1896aa40daae13733f_9366/Ultraboost_1.0_Shoes_Grey_ID9681_01_standard.jpg",
+                title: "Ulra Shoes 1.0",
+                description: "Mens Sportswear",
+                widths: "300px",
+                heights: "300px",
+              }}
+            />
+            <InterestedCards
+              item={{
+                id: 4,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/8bc17cbdc83646a6b093cb217a850fbd_9366/ULTRA_4DFWD_White_ID1687_HM1.jpg",
+                title: "Samba Classic",
+                description: "Performance",
+                widths: "300px",
+                heights: "300px",
+              }}
+            />
+            <InterestedCards
+              item={{
+                id: 5,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/d3179f9f790e44fdb67b9def85f6a1ec_9366/Arsenal_23-24_Third_Authentic_Jersey_Green_IN1603_HM1.jpg",
+                title: "Arsenal 23/24 Third Jersey",
+                description: "Mens Sportswear",
+                widths: "300px",
+                heights: "300px",
+              }}
+            />
+            <InterestedCards
+              item={{
+                id: 6,
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/7be716def58143c7b09bef9dfa69f604_9366/Ultraboost_1.0_Shoes_Black_ID9682_01_standard.jpg",
+                title: "Crazy 8 Shoes",
+                description: "Performance",
+                widths: "300px",
+                heights: "300px",
+              }}
+            />
+          </ScrolbarBox>
         </Box>
+
+        {/**************
+                New Arival
+                 **************/}
 
         <Grid
           container
           spacing={4}
-          sx={{ mt: 20,  paddingLeft: isScreenSmall?1:10, paddingRight: isScreenSmall?1:10 }}
+          sx={{
+            mt: 20,
+            paddingLeft: isScreenSmall ? 1 : 10,
+            paddingRight: isScreenSmall ? 1 : 10,
+          }}
         >
-          {ShopCards.map((item) => (
-            <Grid item xs={12} sm={6} md={3} key={item.id}>
-              <Card
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "100%",
-                  
-                }}
-              >
-                <CardMedia>
-                  <img
-                    src={item.image}
-                    alt="Product"
-                    style={{
-                      height: "500px",
-                      width: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </CardMedia>
-                <CardContent
-                  sx={{ flex: 1, display: "flex", flexDirection: "column" }}
-                >
-                  <div style={{}}>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      sx={{ fontWeight: "bold" }}
-                    >
-                      {item.heading}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{ mb: 4 }}
-                      color="text.secondary"
-                    >
-                      {item.SubHeading}
-                    </Typography>
-                  </div>
-                  <div style={{ textAlign: "start", marginTop: "auto" }}>
-                    <Link
-                      underline="always"
-                      color="inherit"
-                      sx={{
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                        "&:hover": {
-                          backgroundColor: "black",
-                          color: "white",
-                        },
-                      }}
-                      href="#"
-                    >
-                      SHOP NOW
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+          <ShopCards
+            item={{
+              image:
+                "https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enUS/Images/originals-fw23-adicolor-tk1-global-launch-glp-kids-tc-v1-1_tcm221-1056616.jpg",
+              heading: "ICONIC THEN. ICONIC NOW",
+              SubHeading: "Elevate your everyday style with the Samba.",
+            }}
+          />
+          <ShopCards
+            item={{
+              image:
+                "https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enUS/Images/ss23-womens-running-onsite-teaser-card_tcm221-1056612.jpg",
+              heading: "THE LIGHTEST ULTRABOOST EVER",
+              SubHeading:
+                "Ultraboost Light, with 30% lighter Boost for ultimate cushioning and comfort.",
+            }}
+          />
+          <ShopCards
+            item={{
+              image:
+                "https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enUS/Images/fw23-messi-miami-graphics-collection-tcc_tcm221-1057922.jpg",
+              heading: "JUST DROPPED: TRAE 3",
+              SubHeading:
+                "Engineered with performance technology unlike any shoe on court..",
+            }}
+          />
+          <ShopCards
+            item={{
+              image:
+                "https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enUS/Images/hc184-fw23-bts-aug-collegiate-onsite-hp-tcc-product_tcm221-1051392.jpg",
+              heading: "BACK TO SCHOOL STYLES",
+              SubHeading:
+                "Kick-start your fall wardrobe with tees, shorts and sneakers to mix and match.",
+            }}
+          />
         </Grid>
 
         <Grid container>
@@ -1023,11 +464,9 @@ const Nike = () => {
               ml: 2,
               [theme.breakpoints.up("sm")]: {
                 ml: 20,
-               
               },
               fontSize: 30,
               fontWeight: "bold",
-             
             }}
           >
             MORE FROM ADIDAS STORIES
@@ -1036,84 +475,63 @@ const Nike = () => {
             item
             container
             mt={5}
-            sx={{ paddingLeft: 1, paddingRight: 1 , [theme.breakpoints.up("md")]: {
-              paddingLeft: 10, paddingRight: 10 
-            },
+            sx={{
+              paddingLeft: 0,
+              paddingRight: 2,
+              [theme.breakpoints.up("md")]: {
+                paddingLeft: 10,
+                paddingRight: 10,
+              },
             }}
-            
           >
-            {blog.map((item) => (
-              <Grid
-                item
-                key={item.id}
-                xs={12}
-                sm={6}
-                md={3}
-                sx={{
-                  pl: 2,
-                  mb: 2,
+            <BlogCards
+              item={{
+                id: 1,
+                image:
+                  "https://brand.assets.adidas.com/f_auto,q_auto,fl_lossy/capi/enUS/Images/soccer-offside-rules-blog-thumbnail-d_221-953959.jpg",
+                heading: "WHAT IS A PENALTY KICK IN SOCCER",
+                SubHeading:
+                  "Are you curious about what a penalty kick is, when it happens and what the rules are? Read about what they are and when they happen with adidas.",
+              }}
+            />
 
-                  boxShadow: "none",
-                  flexGrow: 1,
-                }}
-              >
-                <Card>
-                  <CardMedia
-                    component="div"
-                    sx={{
-                      width: "100%",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <img
-                      src={item.image}
-                      style={{
-                        width: "100%",
-                        height: "280px",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                      }}
-                      alt={item.heading}
-                    />
-                    <CardContent sx={{ position: "relative" }}>
-                      <Box
-                        sx={{
-                          width: "100%",
-                          mt: -5,
+            <BlogCards
+              item={{
+                id: 2,
+                image:
+                  "https://brand.assets.adidas.com/f_auto,q_auto,fl_lossy/capi/enUS/Images/ultraboost-light-size-guide-blog-thumbnail-d_221-992396.jpg",
+                heading: "OFFSIDES IN SOCCER: EXPLAINED IN DETAIL",
+                SubHeading:
+                  "Watching a match? Get the scoop on the rules of the game, starting with the offside soccer rule, explained by adidas.",
+              }}
+            />
+            <BlogCards
+              item={{
+                id: 3,
 
-                          padding: 1,
-
-                          bgcolor: "white",
-                        }}
-                      >
-                        <Typography
-                          gutterBottom
-                          sx={{
-                            fontSize: "19px",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          {item.heading}
-                        </Typography>
-                        <Typography
-                          sx={{
-                            fontSize: "17px",
-                            textAlign: "justify",
-                          }}
-                          color="black"
-                        >
-                          {item.SubHeading}
-                        </Typography>
-                      </Box>
-                    </CardContent>
-                  </CardMedia>
-                </Card>
-              </Grid>
-            ))}
+                image:
+                  "https://brand.assets.adidas.com/f_auto,q_auto,fl_lossy/capi/enUS/Images/forum-size-guide-blog-thumbnail-d_221-1056582.jpg",
+                heading: "THE DEFINITIVE ADIDAS FORUM SIZE",
+                SubHeading:
+                  "The combination of sport and style, the adidas Forum was made for making a statement no matter where you step. Find your Forum fit using our size guide",
+              }}
+            />
+            <BlogCards
+              item={{
+                id: 4,
+                image:
+                  "https://brand.assets.adidas.com/f_auto,q_auto,fl_lossy/capi/enUS/Images/what-are-soccer-penalty-kicks-blog-thumbnail-d_221-952992.jpg",
+                heading: "WHAT IS A PENALTY KICK IN SOCCER",
+                SubHeading:
+                  "Are you curious about what a penalty kick is, when it happens and what the rules are? Read about what they are and when they happen with adidas.",
+              }}
+            />
           </Grid>
         </Grid>
 
-        {/* POPULAR RIGHT NOW  */}
+        {/**************
+              Popular Right Now
+                 **************/}
         <Box
           sx={{
             mt: 10,
@@ -1124,55 +542,25 @@ const Nike = () => {
           }}
         >
           Popular right now
-          <Box sx={{ mt: 5 }}>
-            <Box sx={{ maxWidth: "100%" }}>
-              <Grid
-                container
-                rowSpacing={7}
-                columnSpacing={{ xs: 5, sm: 5, md: 3 }}
-                columns={isScreenSmall ? { xs: 3, sm: 5, md: 3 } : undefined}
-              >
-                {Popular.map((item) => (
-                  <Grid item xs={12} sm={6} md={4} key={item.name}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "stretch",
-                        height: "100%", // Make the box take the full height
-                      }}
-                    >
-                      <Item
-                        sx={{
-                          flexShrink: 0,
-                          textAlign: "left",
-                          boxShadow: "none",
-                          borderBottom: "3px solid", // Initial border
-                          transition: "border-bottom 0.3s",
-                          "&:hover": {
-                            borderBottom: "10px solid black", // Bold border on hover
-                          },
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            whiteSpace: "nowrap",
-                            fontSize: 40,
-                            fontWeight: "bold",
-                            color: "black",
-                          }}
-                        >
-                          {item.name}
-                        </Typography>
-                      </Item>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
+          <Box sx={{ maxWidth: "100%", mt: 5 }}>
+            <Grid
+              container
+              rowSpacing={7}
+              columnSpacing={{ xs: 5, sm: 5, md: 3 }}
+            >
+              <PopularItem name={"UltraBoost"} />
+              <PopularItem name={"nmd"} />
+              <PopularItem name={"Backpacks"} />
+              <PopularItem name={"Cheats"} />
+              <PopularItem name={"Stan Smith"} />
+              <PopularItem name={"Samba"} />
+            </Grid>
           </Box>
         </Box>
-        {/* STORIES */}
+
+        {/**************
+              STORIES
+                 **************/}
         <Box
           sx={{
             width: "100%",
@@ -1186,98 +574,90 @@ const Nike = () => {
               ml: isScreenLarge ? 3 : 20,
               mr: isScreenLarge ? 0 : 20,
               display: "flex",
-              flexDirection: isScreenLarge ? "column" : "row",
+              flexDirection: isScreenSmall ? "column" : "row",
             }}
           >
-            <Box sx={{ minWidth: "auto", height: "100%", mr: 8 }}>
-              <Typography
-                sx={{
-                  lineHeight: "100%",
-                  mt: 10,
-                  fontSize: "40px",
-                  fontWeight: "bold",
-                  paddingRight: isScreenLarge ? 10 : "50%",
-                  paddingRight: isScreenSmall ? 10 : "50%",
-                }}
-              >
-                Stories, style, and sporting goods at adidas, since 1949
-              </Typography>
+            <Story
+              item={{
+                heading:
+                  "Stories, style, and sporting goods at adidas, since 1949",
+                description: (
+                  <Box>
+                    Through sports, we have the power to change lives. Sports
+                    keep us fit. They keep us mindful. They bring us together.
+                    Athletes inspire us. They help us to get up and get moving.
+                    And sporting goods featuring the latest technologies help us
+                    beat our personal best. adidas is home to the runner, the
+                    basketball player, the soccer kid, the fitness enthusiast,
+                    the yogi. And even the weekend hiker looking to escape the
+                    city. The 3-Stripes are everywhere and anywhere. In sports.
+                    In music. On life’s stages. Before the whistle blows, during
+                    the race, and at the finish line. We’re here to support
+                    creators. To improve their game. To live their lives. And to
+                    change the world. adidas is about more than sportswear and
+                    workout clothes. We partner with the best in the industry to
+                    co-create. This way we offer our fans the sporting goods,
+                    style and clothing that match the athletic needs, while
+                    keeping sustainability in mind. We’re here to support
+                    creators. Improve their game. Create change. And we think
+                    about the impact we have on our world.
+                    <br />
+                    <br />
+                    adidas is about more than sportswear and workout clothes. We
+                    partner with the best in the industry to co-create. This way
+                    we offer our fans the sporting goods, style and clothing
+                    that match the athletic needs, while keeping sustainability
+                    in mind. We’re here to support creators. Improve their game.
+                    Create change. And we think about the impact we have on our
+                    world.
+                  </Box>
+                ),
+              }}
+            />
 
-              <Typography
-                sx={{ fontSize: "17px", textAlign: "justify", mt: 5 }}
-              >
-                Through sports, we have the power to change lives. Sports keep
-                us fit. They keep us mindful. They bring us together. Athletes
-                inspire us. They help us to get up and get moving. And sporting
-                goods featuring the latest technologies help us beat our
-                personal best. adidas is home to the runner, the basketball
-                player, the soccer kid, the fitness enthusiast, the yogi. And
-                even the weekend hiker looking to escape the city. The 3-Stripes
-                are everywhere and anywhere. In sports. In music. On life’s
-                stages. Before the whistle blows, during the race, and at the
-                finish line. We’re here to support creators. To improve their
-                game. To live their lives. And to change the world. adidas is
-                about more than sportswear and workout clothes. We partner with
-                the best in the industry to co-create. This way we offer our
-                fans the sporting goods, style and clothing that match the
-                athletic needs, while keeping sustainability in mind. We’re here
-                to support creators. Improve their game. Create change. And we
-                think about the impact we have on our world.
-                <br /> <br />
-                adidas is about more than sportswear and workout clothes. We
-                partner with the best in the industry to co-create. This way we
-                offer our fans the sporting goods, style and clothing that match
-                the athletic needs, while keeping sustainability in mind. We’re
-                here to support creators. Improve their game. Create change. And
-                we think about the impact we have on our world.
-              </Typography>
-            </Box>
-            <Box sx={{ minWidth: "auto", height: "100%" }}>
-              <Typography
-                sx={{
-                  lineHeight: "100%",
-                  mt: 10,
-                  fontSize: "40px",
-                  fontWeight: "bold",
-                  paddingRight: isScreenLarge ? 10 : "50%",
-                  paddingRight: isScreenSmall ? 10 : "50%",
-                }}
-              >
-                Stories, style, and sporting goods at adidas, since 1949
-              </Typography>
-
-              <Typography
-                sx={{ fontSize: "17px", textAlign: "justify", mt: 5 }}
-              >
-                Through sports, we have the power to change lives. Sports keep
-                us fit. They keep us mindful. They bring us together. Athletes
-                inspire us. They help us to get up and get moving. And sporting
-                goods featuring the latest technologies help us beat our
-                personal best. adidas is home to the runner, the basketball
-                player, the soccer kid, the fitness enthusiast, the yogi. And
-                even the weekend hiker looking to escape the city. The 3-Stripes
-                are everywhere and anywhere. In sports. In music. On life’s
-                stages. Before the whistle blows, during the race, and at the
-                finish line. We’re here to support creators. To improve their
-                game. To live their lives. And to change the world. adidas is
-                about more than sportswear and workout clothes. We partner with
-                the best in the industry to co-create. This way we offer our
-                fans the sporting goods, style and clothing that match the
-                athletic needs, while keeping sustainability in mind. We’re here
-                to support creators. Improve their game. Create change. And we
-                think about the impact we have on our world.
-                <br /> <br />
-                adidas is about more than sportswear and workout clothes. We
-                partner with the best in the industry to co-create. This way we
-                offer our fans the sporting goods, style and clothing that match
-                the athletic needs, while keeping sustainability in mind. We’re
-                here to support creators. Improve their game. Create change. And
-                we think about the impact we have on our world.
-              </Typography>
-            </Box>
+            <Story
+              item={{
+                heading:
+                  "Stories, style, and sporting goods at adidas, since 1949",
+                description: (
+                  <Box>
+                    Through sports, we have the power to change lives. Sports
+                    keep us fit. They keep us mindful. They bring us together.
+                    Athletes inspire us. They help us to get up and get moving.
+                    And sporting goods featuring the latest technologies help us
+                    beat our personal best. adidas is home to the runner, the
+                    basketball player, the soccer kid, the fitness enthusiast,
+                    the yogi. And even the weekend hiker looking to escape the
+                    city. The 3-Stripes are everywhere and anywhere. In sports.
+                    In music. On life’s stages. Before the whistle blows, during
+                    the race, and at the finish line. We’re here to support
+                    creators. To improve their game. To live their lives. And to
+                    change the world. adidas is about more than sportswear and
+                    workout clothes. We partner with the best in the industry to
+                    co-create. This way we offer our fans the sporting goods,
+                    style and clothing that match the athletic needs, while
+                    keeping sustainability in mind. We’re here to support
+                    creators. Improve their game. Create change. And we think
+                    about the impact we have on our world.
+                    <br />
+                    <br />
+                    adidas is about more than sportswear and workout clothes. We
+                    partner with the best in the industry to co-create. This way
+                    we offer our fans the sporting goods, style and clothing
+                    that match the athletic needs, while keeping sustainability
+                    in mind. We’re here to support creators. Improve their game.
+                    Create change. And we think about the impact we have on our
+                    world.
+                  </Box>
+                ),
+              }}
+            />
           </Box>
         </Box>
 
+        {/**************
+             PERCENT OFF BANNER
+                 **************/}
         <Box
           sx={{
             width: "100%",
@@ -1323,7 +703,10 @@ const Nike = () => {
             SIGN UP FOR FREE
           </Button>
         </Box>
-        {/* FOOTER */}
+       
+        {/**************
+           FOOTER
+                 **************/}
         <Box
           sx={{
             width: "100%",
@@ -1338,49 +721,148 @@ const Nike = () => {
           }}
         >
           <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-            {FooterItem.map((item, index) => (
-              <Box
-                sx={{
-                  ml: 4,
-                  // Allow first 2 boxes to grow, others will fill space on the last row
-                  mb: index < 2 ? 0 : 5, // A
-                }}
-                key={item.name}
-              >
-                <Typography sx={{ fontSize: "24px", fontWeight: "bold" }}>
-                  {item.name}
-                </Typography>
+            <FooterItem
+              item={{
+                name: "PRODUCTS",
+                tags: [
+                  "Shoes",
+                  "Clothing",
+                  "Accessories",
+                  "Gift Cards",
+                  "New Arrival",
+                  "Best Seller",
+                ],
+              }}
+            />
+            <FooterItem
+              item={{
+                name: "SPORTS",
+                tags: [
+                  "Soccer",
+                  "Running",
+                  "Basketball",
+                  "Football",
+                  "Outdoor",
+                  "Golf",
+                  "Baseball",
+                  "Tennis",
+                  "Skateboarding",
+                  "Training",
+                ],
+              }}
+            />
+            <FooterItem
+              item={{
+                name: "SUPPORT",
+                tags: [
+                  "Help",
+                  "Returns & Exchanges",
+                  "Shipping",
+                  "Order Tracker",
+                  "Store Locator",
+                  "Size Charts",
+                  "Gift Card Balance",
+                  "How to Clean Shoes",
+                  "Running Shoe Finder",
+                  "Bra Fit Guide",
+                  "Sports Bra Finder",
+                  "Breathing for Running",
+                  "Promotions",
+                ],
+              }}
+            />
+            <FooterItem
+              item={{
+                name: "COMPANY INFO",
+                tags: [
+                  "About Us",
+                  "Student Discount",
+                  "Military & Healthcare Discount",
+                  "adidas Stories",
+                  "adidas Apps",
+                  "Sustainability",
+                  "adiClub",
+                  "Affiliates",
+                  "Press",
+                  "Careers",
+                  "California Transparency in Supply Chains Act",
+                  "Responsible Disclosure",
+                  "Transparency in Coverage",
+                  "Country Selector",
+                ],
+              }}
+            />
 
-                {item.tags &&
-                  item.tags.map((tag) => (
-                    <Box sx={{ display: "block", mt: "10px" }} key={tag}>
-                      <Link
-                        underline="none"
-                        color={"black"}
-                        sx={{
-                          "&:hover": {
-                            textDecoration: "underline",
-                          },
-                          fontSize: "15px",
-                        }}
-                        href="#"
-                      >
-                        {tag}
-                      </Link>
-                    </Box>
-                  ))}
-              </Box>
-            ))}
             <Box sx={{ ml: 4 }}>
               <Typography sx={{ fontSize: "24px", fontWeight: "bold" }}>
                 Follow Us
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "column", mt: 2 }}>
                 {" "}
-                <FacebookIcon sx={{ fontSize: 40 }} />
-                <InstagramIcon sx={{ fontSize: 40 }} />
-                <TwitterIcon sx={{ fontSize: 40 }} />
-                <PinterestIcon sx={{ fontSize: 40 }} />
+                <a
+                  href="https://www.facebook.com/adidas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FacebookIcon
+                    sx={{
+                      color: "blue",
+                      fontSize: 40,
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "black",
+                      },
+                    }}
+                  />
+                </a>
+                <a
+                  href="https://www.instagram.com/adidas/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <InstagramIcon
+                    sx={{
+                      color: "red",
+                      fontSize: 40,
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "black",
+                      },
+                    }}
+                  />
+                </a>
+                <a
+                  href="https://twitter.com/adidas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <TwitterIcon
+                    sx={{
+                      color: "blue",
+                      fontSize: 40,
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "black",
+                      },
+                    }}
+                  />
+                </a>
+                <a
+                  href="https://www.pinterest.com/adidas/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <PinterestIcon
+                    sx={{
+                      color: "red",
+                      fontSize: 40,
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "black",
+                      },
+                    }}
+                  />
+                </a>
               </Box>
             </Box>
           </Box>
@@ -1398,35 +880,9 @@ const Nike = () => {
           }}
         >
           <Box sx={{ display: "flex" }}>
-            {" "}
-            {FooterLast.map((item, index) => (
-              <React.Fragment key={item.name}>
-                {index !== 0 && ( // Add this condition to avoid adding a divider before the first link
-                  <Divider
-                    orientation="vertical"
-                    variant="middle"
-                    sx={{
-                      mt: -1,
-                      bgcolor: "white",
-                      width: "2px",
-                      height: "35px",
-                      ml: 3,
-                    }}
-                  />
-                )}
-                <Link
-                  underline="none"
-                  color={"white"}
-                  sx={{
-                    fontSize: "12px",
-                    ml: 4,
-                  }}
-                  href="#"
-                >
-                  {item.name}
-                </Link>
-              </React.Fragment>
-            ))}
+            <LastFooter name={"Your Privacy Choices"} />
+            <LastFooter name={"Privacy policy"} />
+            <LastFooter name={"Terms and Conditions"} />
           </Box>
 
           <Box sx={{ color: "white", position: "absolute", marginTop: 15 }}>
