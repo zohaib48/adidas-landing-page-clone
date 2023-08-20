@@ -67,22 +67,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const useStyle = makeStyles((theme) => ({
-  tab: {
-    fontWeight: "bold",
-    fontSize: "18px",
-    color: "red", // Change text color
-    "&.Mui-selected": {
-      color: "blue", // Change text color of selected tab
-    },
-    "&.MuiTab-textColorPrimary.Mui-selected": {
-      color: "green", // Change text color of selected tab when textColor is primary
-    },
-  },
-  indicator: {
-    backgroundColor: "orange", // Change indicator color
-  },
-}));
+
 
 export default function Header() {
   const [searchText, setSearchText] = React.useState("");

@@ -255,7 +255,7 @@ const Nike = () => {
                 id: 3,
                 name: "BEST SELLERS",
                 image:
-                  "https://www.adidas.ae/on/demandware.static/-/Sites-adidas-navigation-uae/default/dw5fa4e343/Men_Shoes.png",
+                  "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/0fc3ece4755a406390fbf7b1bf133728_9366/x-crazyfast-messi.3-firm-ground-cleats.jpg",
               }}
             />
             <CategoryCards
