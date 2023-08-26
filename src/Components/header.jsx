@@ -349,8 +349,9 @@ export default function Header() {
           display: "flex",
         }}
       >
-        <Toolbar sx={{ bgcolor: "white", width: "100%" }}>
+        <Toolbar sx={{ bgcolor: "white", width: "100%" ,display:"flex",}}>
           <IconButton
+          sx={{}}
             {...{
               edge: "start",
               color: "black",
@@ -359,7 +360,7 @@ export default function Header() {
               onClick: handleDrawerOpen,
             }}
           >
-            <MenuIcon sx={{ fontSize: "40px" }} />
+            <MenuIcon sx={{ fontSize: "40px",}} />
           </IconButton>
 
           <Drawer
@@ -371,19 +372,23 @@ export default function Header() {
           >
             <div className={drawerContainer}>{getDrawerChoices()}</div>
           </Drawer>
+          <Box sx={{ width: "100%", display: "flex", justifyContent: "center", }}>
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center", // Vertical center alignment
+      height: "90px",
+      width: "200px",
+      mr:5,
+      backgroundImage: `url(${logo})`,
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+    }}
+  ></Box>
+</Box>
 
-          <Box
-            sx={{
-              display: `flex`,
-              height: `90px`,
-
-              width: "120px",
-              backgroundImage: `url(${logo})`,
-              backgroundSize: 200,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-            }}
-          ></Box>
+          
         </Toolbar>
       </AppBar>
     );

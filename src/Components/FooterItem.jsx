@@ -1,12 +1,21 @@
-import { Box, Link, Typography } from '@mui/material'
+import { Box, Link, Typography,useTheme } from '@mui/material'
 import React from 'react'
 
 
+
+
+
+
 const FooterItem = ({item}) => {
+  const theme =useTheme();
   return (
     <Box
     sx={{
       ml: 4,
+      mb:4,
+      [theme.breakpoints.down("sm")]:{
+        mt:5
+      }
       // Allow first 2 boxes to grow, others will fill space on the last row
       
     }}

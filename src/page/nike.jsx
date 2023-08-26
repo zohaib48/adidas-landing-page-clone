@@ -27,9 +27,6 @@ import CategoryCards from "../Components/Category_Cards";
 import ScrolbarBox from "../Components/Scrolbar";
 import Links from "../Components/Links";
 
-
-
-
 const Nike = () => {
   const theme = useTheme();
   const isScreenSmall = useMediaQuery(theme.breakpoints.down("md"));
@@ -69,15 +66,19 @@ const Nike = () => {
             width: "100%",
             backgroundImage: `url(https://www.asics.com/dw/image/v2/BBTN_PRD/on/demandware.static/-/Sites-asics-us-Library/default/dw29ebd128/firstspirit/media/blog_article_images_22521/asics_blog_hero_desktop_runningvstraining_022521.jpg)`,
             backgroundSize: "cover",
-            backgroundPosition: "end",
+            backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
+            [theme.breakpoints.down("lg")]: {
+              height: "500px",
+            },
           }}
         >
           <Box
             sx={{
               ml: 2,
-              [theme.breakpoints.up("sm")]: {
+              mt: 13,
+              [theme.breakpoints.up("md")]: {
                 ml: 20,
               },
             }}
@@ -88,7 +89,7 @@ const Nike = () => {
               SUPERSTAR XLG
             </Typography>
             <Typography
-              sx={{ fontWeight: "bold", fontSize: "20px", color: "black" }}
+              sx={{ fontWeight: "bold", fontSize: "20px", color: "white" }}
             >
               No expectations, no rules. Tell your story with the Superstar XLG.
             </Typography>
@@ -138,7 +139,7 @@ const Nike = () => {
               fontSize: "45px",
               color: "black",
               mt: 8,
-              ml: 1,
+              ml: 0,
               [theme.breakpoints.up("sm")]: {
                 ml: 20,
               },
@@ -241,7 +242,14 @@ const Nike = () => {
               display: "flex",
             }}
           >
-            <CategoryCards item={{ id: 1, name: "SHOES", image: "https://assets.adidas.com/images/w_600,f_auto,q_auto/ac32ca411304417e9f5faf2c0005c887_9366/Ultraboost_1.0_Shoes_White_HQ6172_01_standard.jpg" }} />
+            <CategoryCards
+              item={{
+                id: 1,
+                name: "SHOES",
+                image:
+                  "https://assets.adidas.com/images/w_600,f_auto,q_auto/ac32ca411304417e9f5faf2c0005c887_9366/Ultraboost_1.0_Shoes_White_HQ6172_01_standard.jpg",
+              }}
+            />
             <CategoryCards
               item={{
                 id: 2,
@@ -703,10 +711,11 @@ const Nike = () => {
             SIGN UP FOR FREE
           </Button>
         </Box>
-       
+
         {/**************
            FOOTER
                  **************/}
+
         <Box
           sx={{
             width: "100%",
@@ -793,7 +802,14 @@ const Nike = () => {
               }}
             />
 
-            <Box sx={{ ml: 4 }}>
+            <Box
+              sx={{
+                ml: 4,
+                [theme.breakpoints.down("sm")]: {
+                  mt: 5,
+                },
+              }}
+            >
               <Typography sx={{ fontSize: "24px", fontWeight: "bold" }}>
                 Follow Us
               </Typography>
@@ -879,7 +895,7 @@ const Nike = () => {
             justifyContent: "center",
           }}
         >
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", mr: 4 }}>
             <LastFooter name={"Your Privacy Choices"} />
             <LastFooter name={"Privacy policy"} />
             <LastFooter name={"Terms and Conditions"} />

@@ -11,7 +11,7 @@ const InterestedCards = (props) => {
                 key={item.id}
                 sx={{
                   minWidth: item.widths,
-                  ml: 2,
+                  
                   mr: 3,
                   mb: 2,
                   border:"solid",

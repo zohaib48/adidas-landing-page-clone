@@ -11,6 +11,7 @@ const ScrolbarBox = ({ children, marginLeft }) => {
         [theme.breakpoints.up('md')]: {
           ml: marginLeft !== undefined ? marginLeft : 20, // Use passed marginLeft or default to 20
         },
+        
         display: 'flex',
         overflowX: 'scroll',
         scrollbarWidth: '3px',

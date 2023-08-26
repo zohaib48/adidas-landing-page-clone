@@ -15,7 +15,7 @@ const LastFooter = ({ name }) => {
               bgcolor: "white",
               width: "2px",
               height: "35px",
-              ml: 3,
+              ml: 2,
             }}
           />
      
@@ -24,7 +24,7 @@ const LastFooter = ({ name }) => {
           color={"white"}
           sx={{
             fontSize: "12px",
-            ml: 4,
+            ml: 2,
           }}
           href="#"
         >
